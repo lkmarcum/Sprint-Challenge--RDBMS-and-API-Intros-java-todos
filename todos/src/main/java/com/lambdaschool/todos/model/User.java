@@ -96,9 +96,17 @@ public class User extends Auditable
         this.userRoles = userRoles;
     }
 
+    public List<Todo> getTodos()
+    {
+        return todos;
+    }
 
+    public void setTodos(List<Todo> todos)
+    {
+        this.todos = todos;
+    }
 
-//    public List<SimpleGrantedAuthority> getAuthority()
+    //    public List<SimpleGrantedAuthority> getAuthority()
 //    {
 //        List<SimpleGrantedAuthority> rtnList = new ArrayList<>();
 //
