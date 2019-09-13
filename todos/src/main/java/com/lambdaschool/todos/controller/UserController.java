@@ -28,23 +28,6 @@ public class UserController
     @Autowired
     private TodoService todoService;
 
-    // GET localhost:2019/users/users
-    @GetMapping(value = "/users", produces = {"application/json"})
-    public ResponseEntity<?> listAllUsers()
-    {
-        List<User> myUsers = userService.findAll();
-        return new ResponseEntity<>(myUsers, HttpStatus.OK);
-    }
-
-    // GET localhost:2019/users/user/2
-    @GetMapping(value = "/user/{userId}", produces = {"application/json"})
-    public ResponseEntity<?> getUser(@PathVariable
-                                             Long userId)
-    {
-        User u = userService.findUserById(userId);
-        return new ResponseEntity<>(u, HttpStatus.OK);
-    }
-
     // POST localhost:2019/users
     @PostMapping(value = "/", consumes = {"application/json"}, produces = {"application/json"})
     public ResponseEntity<?> addNewUser(@Valid @RequestBody
@@ -72,16 +55,6 @@ public class UserController
         Todo tempTodo = new Todo(newTodo.getDescription(), newTodo.getDatestarted(), userService.findUserById(userid));
         todoService.save(tempTodo);
         return new ResponseEntity<>(tempTodo, HttpStatus.OK);
-    }
-
-    // PUT
-    @PutMapping(value = "/user/{id}")
-    public ResponseEntity<?> updateUser(@RequestBody
-                                                User updateUser, @PathVariable
-                                                long id)
-    {
-        userService.update(updateUser, id);
-        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     // DELETE localhost:2019/users/userid/{userid}
