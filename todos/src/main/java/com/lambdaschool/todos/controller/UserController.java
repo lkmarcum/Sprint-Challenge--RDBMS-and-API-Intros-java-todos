@@ -9,6 +9,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 // import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -27,6 +28,13 @@ public class UserController
 
     @Autowired
     private TodoService todoService;
+
+    // GET localhost:2019/users/mine
+    @GetMapping(value = "/mine", produces = {"application/json"})
+    public ResponseEntity<?> getLoggedInUser(Authentication authentication)
+    {
+        return new ResponseEntity<>(userService.findUserByName(authentication.getName()), HttpStatus.OK);
+    }
 
     // POST localhost:2019/users
     @PostMapping(value = "", consumes = {"application/json"}, produces = {"application/json"})
