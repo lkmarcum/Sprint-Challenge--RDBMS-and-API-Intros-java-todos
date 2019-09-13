@@ -83,7 +83,7 @@ public class UserServiceImpl implements UserService
 
         for (Todo t : user.getTodos())
         {
-            newUser.getTodos().add(new Todo(t.getTodo(), new Date(), newUser));
+            newUser.getTodos().add(new Todo(t.getDescription(), new Date(), newUser));
         }
 
         return userrepos.save(newUser);
@@ -137,7 +137,7 @@ public class UserServiceImpl implements UserService
         {
             for (Todo t : user.getTodos())
             {
-                currentUser.getTodos().add(new Todo(t.getTodo(), new Date(), currentUser));
+                currentUser.getTodos().add(new Todo(t.getDescription(), new Date(), currentUser));
             }
         }
         return userrepos.save(currentUser);

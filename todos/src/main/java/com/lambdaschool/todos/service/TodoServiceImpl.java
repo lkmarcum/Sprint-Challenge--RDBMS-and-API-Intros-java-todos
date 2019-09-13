@@ -66,15 +66,7 @@ public class TodoServiceImpl implements TodoService
     {
         Todo newTodo = todorepos.findById(id).orElseThrow(() -> new EntityNotFoundException(Long.toString(id)));
 
-        if (todo.getTodo() != null)
-        {
-            newTodo.setTodo(todo.getTodo());
-        }
-
-        if (todo.getUser() != null)
-        {
-            newTodo.setUser(todo.getUser());
-        }
+        newTodo.setCompleted(true);
 
         return todorepos.save(newTodo);
     }

@@ -14,7 +14,7 @@ public class Todo extends Auditable
     private long todoid;
 
     @Column(nullable = false)
-    private String todo;
+    private String description;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userid",
@@ -31,9 +31,9 @@ public class Todo extends Auditable
         this.completed = false;
     }
 
-    public Todo(String todo, Date datestarted, User user)
+    public Todo(String description, Date datestarted, User user)
     {
-        this.todo = todo;
+        this.description = description;
         this.user = user;
         this.completed = false;
         this.datestarted = datestarted;
@@ -49,14 +49,14 @@ public class Todo extends Auditable
         this.todoid = todoid;
     }
 
-    public String getTodo()
+    public String getDescription()
     {
-        return todo;
+        return description;
     }
 
-    public void setTodo(String todo)
+    public void setDescription(String description)
     {
-        this.todo = todo;
+        this.description = description;
     }
 
     public User getUser()
@@ -67,5 +67,25 @@ public class Todo extends Auditable
     public void setUser(User user)
     {
         this.user = user;
+    }
+
+    public boolean isCompleted()
+    {
+        return completed;
+    }
+
+    public void setCompleted(boolean completed)
+    {
+        this.completed = completed;
+    }
+
+    public Date getDatestarted()
+    {
+        return datestarted;
+    }
+
+    public void setDatestarted(Date datestarted)
+    {
+        this.datestarted = datestarted;
     }
 }
