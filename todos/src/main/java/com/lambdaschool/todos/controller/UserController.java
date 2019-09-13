@@ -29,7 +29,7 @@ public class UserController
     private TodoService todoService;
 
     // POST localhost:2019/users
-    @PostMapping(value = "/", consumes = {"application/json"}, produces = {"application/json"})
+    @PostMapping(value = "", consumes = {"application/json"}, produces = {"application/json"})
     public ResponseEntity<?> addNewUser(@Valid @RequestBody
                                                 User newuser) throws URISyntaxException
     {
